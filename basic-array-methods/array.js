@@ -37,6 +37,7 @@ function palindrome(origString) {
 }
 
 
+
 var testString = "A car, a man, a maraca";
 
 reversal(testString);
