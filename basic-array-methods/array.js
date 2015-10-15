@@ -10,20 +10,35 @@
   Note: document.write() is a fast way to put content into the DOM 
   without the need for a getElementById() and innerHTML.
 */
-var origString = ["This is a string."]
+
 function reversal(origString) {
-	document.write() origString.reverse();
+  var reversedString = origString.split("").reverse().join("");
+  document.write(reversedString);
+
+  
+  return reversedString;
 }
 
-function alphabits() {
-
+function alphabits(origString) {
+  document.write("<div>" + origString.split("").sort().join("") + "</div>");
 }
 
-function palindrome() {
+function palindrome(origString) {
+  var newString = origString.replace(/[\s,]/g, "").toLowerCase();
+  var reversedNewString = reversal(newString);
 
+  if (newString === reversedNewString) {
+    document.write("<div>\"" + origString + "\" is a palidrome</div>");
+    
+  } else {
+    document.write("<div>\"" + origString + "\" is not a palindrome</div>");
+    
+  }
 }
 
-var testString = "";
+
+var testString = "A car, a man, a maraca";
+
 reversal(testString);
 alphabits(testString);
 palindrome(testString);
