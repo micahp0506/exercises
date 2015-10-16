@@ -23,34 +23,53 @@
       the converted temperature should be blue.
   9. For any other temperature, the color should be green.
 */
-var temperature = document.getElementById("tree").addEventListener("keyup", function(e) {
-  temperature.innerHTML = e.target.value;
+
+// getting the value of text input upon clicking button
+
+var input;
+
+document.getElementById("converter").addEventListener("click", function() {
+  input = document.getElementById("temp").value;
+  console.log(input);
 });
     
-  
-  // temperature.addEventListener("convert", function(e) {
-    // console.log(temperature.value);
+  // temperature.addEventListener("convert", function(e) {     *
+    // console.log(temperature.value);     *
 
 
-function toCelsius () {
-  var celsius = (temperature - 32) * .5555555556; 
+function toCelsius (input) {
+  var celsius = Math.round((input - 32) * .5555555556); 
+    console.log(celsius);
 }
+
 
 function toFahrenheit () {
-  var fahrenheit = temperature * 1.8 + 32;
+  var fahrenheit = Math.round(input * 1.8 + 32);
+    console.log(fahrenheit);
 }
 
-// Get a reference to the button element in the DOM
-var button = document.getElementById("converter");
-button.addEventListener("click", handleSectionClick);
+// // Get a reference to the button element in the DOM     *
 
-// This function should determine which conversion should
-// happen based on which radio button is selected.
-function determineConverter (clickEvent) {
-  console.log("event", clickEvent);
-}
+// button.addEventListener("click", handleSectionClick);
+
+// // This function should determine which conversion should       *
+// // happen based on which radio button is selected.         *
+// function determineConverter (clickEvent) {
 
 
+// var pickedOption = document.getElementById("temp")
+//   console.log("event", clickEvent);
 
-// Assign a function to be executed when the button is clicked
-button.addEventListener("click", determineConverte
+
+// for (var j = 0; j < radio.length, j++)
+//   var origTemp = 0;
+// if (document.getElementById("cel").checked) {
+//   toCelsius();
+// } else if (document.getElementById("fahr").checked) {
+//   toFahrenheit();
+// }
+
+
+
+// // Assign a function to be executed when the button is clicked    *
+// button.addEventListener("click", determineConverter);
