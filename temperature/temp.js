@@ -26,29 +26,110 @@
 
 // getting the value of text input upon clicking button
 
-var input;
+var input = document.getElementById("temp");
+var events = "click keyup".split(" ");
 
-document.getElementById("converter").addEventListener("click", function() {
+// To determine what radio button is checked
+function eventHandler() {
   input = document.getElementById("temp").value;
   console.log("input value", input);
-  if (document.getElementById("cel").checked) {
-    toCelsius(input);
+if (document.getElementById("cel").checked) {
+    toCelsius(document.getElementById("temp"));
   } else if (document.getElementById("fahr").checked) {
-    toFahrenheit(input);
+    toFahrenheit(document.getElementById("temp"));
   } else (alert("Hey knucklehead, choose Fahrenheit or Celsius!!"))
-});
-    
-
-function toCelsius () {
-  var celsius = Math.round((input - 32) * .5555555556); 
-    console.log("C", celsius);
+};
+// Loop to go through event listeners
+for (var i =0; i > events.length; i++) {
+  input.addEventListener(events[i], eventHandler, false)
 }
+// Convert button
+document.getElementById("converter").addEventListener("click", eventHandler);
+// Enter key
+document.getElementById("converter").addEventListener("keydown", function (e) {
+      key = e.which || e.keyCode;
+      if (key === 13) {
+      }
+});
+// function searchKeyPress(e) {
+  // var key = e.which || e.keycode;
+    // if (key ==+ 13) {
+      // document.getElementById("converter").click();
+        // return false;
+        // }
+      // return true;
+    // };
+
+
+
+// Clear button
+function clearfield() {
+    document.getElementById("temp").value = "";
+    document.getElementById("temp-result").innerHTML = "";
+    document.getElementById("cel").checked = false;
+    document.getElementById("fahr").checked = false;
+}
+
+clear.addEventListener("click", clearfield, false);
+
+// Conversion functions
+function toCelsius () {
+  var celsius = Math.round((input - 32) * .5555555556);
+    console.log("C", celsius);
+    if (celsius > 32) { 
+    document.getElementById("temp-result").style.color = "red";
+    document.getElementById("temp-result").innerHTML = (celsius + "C");
+  } else if (celsius < 0) {
+    document.getElementById("temp-result").style.color = "blue";
+    document.getElementById("temp-result").innerHTML = (celsius + "C");
+  } else {
+    document.getElementById("temp-result").style.color = "green";
+    document.getElementById("temp-result").innerHTML = (celsius + "C");
+  }
+};
 
 
 function toFahrenheit () {
   var fahrenheit = Math.round(input * 1.8 + 32);
     console.log("F", fahrenheit);
-}
+    if (fahrenheit > 90) { 
+    document.getElementById("temp-result").style.color = "red";
+    document.getElementById("temp-result").innerHTML = (fahrenheit + "F");
+  } else if (fahrenheit < 32) {
+    document.getElementById("temp-result").style.color = "blue";
+    document.getElementById("temp-result").innerHTML = (fahrenheit + "F");
+  } else {
+    document.getElementById("temp-result").style.color = "green";
+    document.getElementById("temp-result").innerHTML = (fahrenheit + "F");
+  }
+};
+  // input = document.getElementById("temp").value;
+  // console.log("input value", input);
+// if (document.getElementById("cel").checked) {
+//     toCelsius(input);
+//   } else if (document.getElementById("fahr").checked) {
+//     toFahrenheit(input);
+//   } else (alert("Hey knucklehead, choose Fahrenheit or Celsius!!"))
+// });
+
+
+      // toCelsius(input);
+      // console.log(celsius);
+      // } else if (e.which === 13 && document.getElementById("fahr").checked) {
+        // input = e.target.value;
+        // console.log("input value", input);
+          // toFahrenheit(input);
+          // console.log(fahrenheit);
+      // } else (alert("Hey knucklehead, choose Fahrenheit or Celsius!!"))
+      // document.getElementById("cel").checked { 
+      // } if (e.which === 13)
+        // document.getElementById("fahr").checked {
+    // } else (alert("Hey knucklehead, choose Fahrenheit or Celsius!!"))
+  // }
+// }); 
+    
+
+
 
 // // Get a reference to the button element in the DOM     *
 
