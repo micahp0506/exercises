@@ -18,10 +18,10 @@
       user pressed the enter key, and if that happens, perform
       the conversion.
   7. If the temperature is greater than 90F/32C the color of 
-      the converted temperature should be red.
+      the converted temperature should be red. if (fahr is clicked && input > 90) or (cel is clicked && input > 32)/red 
   8. If the temperature is less than 32F/0C the color of 
-      the converted temperature should be blue.
-  9. For any other temperature, the color should be green.
+      the converted temperature should be blue. else if (fahr is clicked && input < 32) or (cel is clicked && input < 0)/blue
+  9. For any other temperature, the color should be green. else (green)
 */
 
 // getting the value of text input upon clicking button
@@ -30,22 +30,24 @@ var input;
 
 document.getElementById("converter").addEventListener("click", function() {
   input = document.getElementById("temp").value;
-  console.log(input);
+  console.log("input value", input);
+  if (document.getElementById("cel").checked) {
+    toCelsius(input);
+  } else if (document.getElementById("fahr").checked) {
+    toFahrenheit(input);
+  } else (alert("Hey knucklehead, choose Fahrenheit or Celsius!!"))
 });
     
-  // temperature.addEventListener("convert", function(e) {     *
-    // console.log(temperature.value);     *
 
-
-function toCelsius (input) {
+function toCelsius () {
   var celsius = Math.round((input - 32) * .5555555556); 
-    console.log(celsius);
+    console.log("C", celsius);
 }
 
 
 function toFahrenheit () {
   var fahrenheit = Math.round(input * 1.8 + 32);
-    console.log(fahrenheit);
+    console.log("F", fahrenheit);
 }
 
 // // Get a reference to the button element in the DOM     *
@@ -63,11 +65,6 @@ function toFahrenheit () {
 
 // for (var j = 0; j < radio.length, j++)
 //   var origTemp = 0;
-// if (document.getElementById("cel").checked) {
-//   toCelsius();
-// } else if (document.getElementById("fahr").checked) {
-//   toFahrenheit();
-// }
 
 
 
