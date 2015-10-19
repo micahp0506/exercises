@@ -27,39 +27,28 @@
 // getting the value of text input upon clicking button
 
 var input = document.getElementById("temp");
-var events = "click keyup".split(" ");
 
 // To determine what radio button is checked
 function eventHandler() {
   input = document.getElementById("temp").value;
   console.log("input value", input);
 if (document.getElementById("cel").checked) {
-    toCelsius(document.getElementById("temp"));
+    toCelsius(input);
   } else if (document.getElementById("fahr").checked) {
-    toFahrenheit(document.getElementById("temp"));
+    toFahrenheit(input);
   } else (alert("Hey knucklehead, choose Fahrenheit or Celsius!!"))
 };
-// Loop to go through event listeners
-for (var i =0; i > events.length; i++) {
-  input.addEventListener(events[i], eventHandler, false)
-}
-// Convert button
-document.getElementById("converter").addEventListener("click", eventHandler);
-// Enter key
-document.getElementById("converter").addEventListener("keydown", function (e) {
-      key = e.which || e.keyCode;
-      if (key === 13) {
-      }
-});
-// function searchKeyPress(e) {
-  // var key = e.which || e.keycode;
-    // if (key ==+ 13) {
-      // document.getElementById("converter").click();
-        // return false;
-        // }
-      // return true;
-    // };
 
+// Convert button
+    document.getElementById("converter").addEventListener("click", eventHandler);
+    
+// Enter key
+    document.addEventListener("keyup", function (e) {
+          var key = e.which || e.keyCode;
+          if (key === 13) {
+            document.getElementById("converter").click();
+          }
+    });
 
 
 // Clear button
